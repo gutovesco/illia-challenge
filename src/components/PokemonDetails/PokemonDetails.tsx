@@ -11,8 +11,10 @@ import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import { checkPokemonType } from "../../helpers/CheckPokemonType";
 import PokeModal from "../PokeModal/PokeModal";
+import { useTranslation } from "react-i18next";
 
 const PokemonDetails: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const params = useParams();
   const [pokemon, setPokemon] = useState<ICards>(INITIAL_CARDS);
   const [openModal, setOpenModal] = useState(false);
@@ -61,17 +63,17 @@ const PokemonDetails: React.FC = () => {
             }}
           >
             <Typography gutterBottom variant="h4" component="div">
-              Nome: {pokemon.name}
+              {t("Name")}: {pokemon.name}
             </Typography>
             <Typography gutterBottom variant="h4" component="div">
-              Tipo: {pokemon.types}
+              {t("Type")}: {pokemon.types}
             </Typography>
             <Typography gutterBottom variant="h4" component="div">
               Id: {pokemon.id}
             </Typography>
             {pokemon.weaknesses.map((item: any, index: any) => (
               <Typography key={index} gutterBottom variant="h4" component="div">
-                Fraqueza - {item.type}
+                {t("Weakness")} - {item.type}
               </Typography>
             ))}
             <Button variant="contained" onClick={() => setOpenModal(true)}>
