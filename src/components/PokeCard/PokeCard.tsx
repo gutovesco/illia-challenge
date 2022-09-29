@@ -18,7 +18,7 @@ const PokeCard: React.FC<IPokeCard> = ({ card }) => {
       sx={{
         width: 200,
         margin: "15px",
-        border: "1px solid #e5d36b",
+        borderRadius: 4,
         backgroundColor: checkPokemonType(
           card.types && card.types.length > 0 ? card.types[0] : "Colorless"
         ),

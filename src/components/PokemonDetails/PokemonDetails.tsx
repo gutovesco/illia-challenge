@@ -10,10 +10,12 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import { checkPokemonType } from "../../helpers/CheckPokemonType";
+import PokeModal from "../PokeModal/PokeModal";
 
 const PokemonDetails: React.FC = () => {
   const params = useParams();
   const [pokemon, setPokemon] = useState<ICards>(INITIAL_CARDS);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -21,9 +23,11 @@ const PokemonDetails: React.FC = () => {
       .then((res) => {
         setPokemon(res.data.data[0]);
       });
-  }, []);
+  }, [params.id]);
 
-  console.log(pokemon);
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   return (
     <>
@@ -33,7 +37,7 @@ const PokemonDetails: React.FC = () => {
             sx={{
               minWidth: 550,
               margin: "15px",
-              border: "1px solid #e5d36b",
+              borderRadius: 7,
               backgroundColor: checkPokemonType(
                 pokemon.types && pokemon.types.length > 0
                   ? pokemon.types[0]
@@ -70,24 +74,16 @@ const PokemonDetails: React.FC = () => {
                 Fraqueza - {item.type}
               </Typography>
             ))}
-            <Button variant="contained">Detalhes</Button>
-            {pokemon.attacks.map((item, index) => (
-              <>
-                <Typography
-                  key={index}
-                  gutterBottom
-                  variant="h4"
-                  component="div"
-                >
-                  Attack: {item.name} - Dano: {item.damage}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  {item.text}
-                </Typography>
-              </>
-            ))}
+            <Button variant="contained" onClick={() => setOpenModal(true)}>
+              Detalhes
+            </Button>
           </Box>
         </Box>
+        <PokeModal
+          open={openModal}
+          pokemon={pokemon}
+          handleClose={handleCloseModal}
+        />
       </Container>
     </>
   );

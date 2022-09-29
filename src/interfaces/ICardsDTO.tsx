@@ -24,4 +24,5 @@ interface Attacks {
   name: string;
   text: string;
   damage: string;
+  convertedEnergyCost?: number;
 }

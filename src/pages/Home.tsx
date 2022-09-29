@@ -52,7 +52,7 @@ const Home = () => {
               {cards
                 .filter((card) => card.name.includes(searchValue))
                 .map((card) => (
-                  <PokeCard card={card} />
+                  <PokeCard key={card.id} card={card} />
                 ))}
             </Box>
           </>
