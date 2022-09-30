@@ -37,6 +37,7 @@ const Home = () => {
       .then((res) => {
         handleSetCards(res.data.data);
       });
+    // eslint-disable-next-line
   }, [currentPage]);
 
   return (
