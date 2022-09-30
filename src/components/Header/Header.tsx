@@ -70,7 +70,7 @@ const SearchAppBar: React.FC<ISearchAppBar> = ({
               component="div"
               sx={{ display: { xs: "none", sm: "block", marginRight: "20px" } }}
             >
-              Illia challenge
+              IlliaChallenge
             </Typography>
             <nav>
               <Link

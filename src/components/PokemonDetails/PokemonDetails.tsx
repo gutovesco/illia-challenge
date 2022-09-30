@@ -14,7 +14,7 @@ import PokeModal from "../PokeModal/PokeModal";
 import { useTranslation } from "react-i18next";
 
 const PokemonDetails: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const params = useParams();
   const [pokemon, setPokemon] = useState<ICards>(INITIAL_CARDS);
   const [openModal, setOpenModal] = useState(false);
@@ -32,7 +32,7 @@ const PokemonDetails: React.FC = () => {
   };
 
   return (
-    <>
+    <div data-testid="details-list-section">
       <Container maxWidth={false}>
         <Box sx={{ display: "flex", flexDirection: "row", marginLeft: "5rem" }}>
           <Card
@@ -76,7 +76,11 @@ const PokemonDetails: React.FC = () => {
                 {t("Weakness")} - {item.type}
               </Typography>
             ))}
-            <Button variant="contained" onClick={() => setOpenModal(true)}>
+            <Button
+              variant="contained"
+              data-testid="details-button"
+              onClick={() => setOpenModal(true)}
+            >
               Detalhes
             </Button>
           </Box>
@@ -87,7 +91,7 @@ const PokemonDetails: React.FC = () => {
           handleClose={handleCloseModal}
         />
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { ICards } from "src/interfaces/ICardsDTO";
+import Button from "@mui/material/Button";
 
 const style = {
   position: "absolute" as "absolute",
@@ -44,6 +45,13 @@ const PokeModal: React.FC<IPokeModal> = ({ handleClose, open, pokemon }) => {
               </Typography>
             </Box>
           ))}
+          <Button
+            variant="contained"
+            data-testid="details-button"
+            onClick={handleClose}
+          >
+            Fechar
+          </Button>
         </Box>
       </Modal>
     </div>

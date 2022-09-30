@@ -41,11 +41,13 @@ const Home = () => {
 
   return (
     <>
-      <Header
-        searchValue={searchValue}
-        handleSetSearchValue={handleSetSearchValue}
-      />
-      <Container maxWidth={false}>
+      <header data-testid="header">
+        <Header
+          searchValue={searchValue}
+          handleSetSearchValue={handleSetSearchValue}
+        />
+      </header>
+      <Container data-testid="cards-list-section" maxWidth={false}>
         {matches ? (
           <>
             <Box sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -69,6 +71,7 @@ const Home = () => {
           }}
         >
           <Pagination
+            data-testid="pagination"
             count={1055}
             page={currentPage}
             onChange={handlePageChange}
