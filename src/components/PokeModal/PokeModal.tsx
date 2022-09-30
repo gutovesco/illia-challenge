@@ -49,6 +49,7 @@ const PokeModal: React.FC<IPokeModal> = ({ handleClose, open, pokemon }) => {
             variant="contained"
             data-testid="details-button"
             onClick={handleClose}
+            sx={{ marginTop: "15px" }}
           >
             Fechar
           </Button>
